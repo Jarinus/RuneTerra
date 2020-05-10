@@ -33,11 +33,11 @@ public class ObjectActionPacketListener implements PacketListener {
         final int y = packet.readUnsignedShortA();
         final Position position = new Position(x, y, player.getPosition().getZ());
         final GameObject gameObject = new GameObject(id, position);
-        if (id > 0 && id != 6 && !RegionClipping.objectExists(gameObject)) {
-            player.getPacketSender().sendMessage("An error occured. Error code: " + id)
-                    .sendMessage("Please report the error to a staff member.");
-            return;
-        }
+//         if (id > 0 && id != 6 && !RegionClipping.objectExists(gameObject)) {
+//             player.getPacketSender().sendMessage("An error occured. Error code: " + id)
+//                     .sendMessage("Please report the error to a staff member.");
+//             return;
+//         }
         int distanceX = (player.getPosition().getX() - position.getX());
         int distanceY = (player.getPosition().getY() - position.getY());
         if (distanceX < 0)

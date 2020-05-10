@@ -1874,7 +1874,7 @@
     "item-id": 861,
     "interface": "SHORTBOW"
   },
-    {
+  {
     "hash": 12926,
     "item-id": 12926,
     "interface": "SHORTBOW"
@@ -2083,8 +2083,7 @@
     "hash": 11804,
     "item-id": 11804,
     "interface": "TWO_HANDED_SWORD"
-  }
-  ,
+  },
   {
     "hash": 11802,
     "item-id": 11802,
@@ -2934,5 +2933,10 @@
     "hash": 19481,
     "item-id": 19481,
     "interface": "CROSSBOW"
+  },
+  {
+    "hash": 4747,
+    "item-id": 4747,
+    "interface": "DUAL_HAMMER"
   }
 ]
