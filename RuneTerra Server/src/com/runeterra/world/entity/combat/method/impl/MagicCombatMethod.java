@@ -59,7 +59,7 @@ public class MagicCombatMethod implements CombatMethod {
 	}
 
 	@Override
-	public int getAttackSpeed(Character character) {
+	public float getAttackSpeed(Character character) {
 
 		if (character.getCombat().getPreviousCast() != null) {
 			return character.getCombat().getPreviousCast().getAttackSpeed();

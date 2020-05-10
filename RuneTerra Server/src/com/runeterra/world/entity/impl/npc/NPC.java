@@ -136,7 +136,7 @@ public class NPC extends Character {
 	}
 
 	@Override
-	public int getBaseAttackSpeed() {
+	public float getBaseAttackSpeed() {
 		return getDefinition().getAttackSpeed();
 	}
 

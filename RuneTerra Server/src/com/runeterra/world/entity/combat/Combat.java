@@ -52,7 +52,7 @@ public class Combat {
 
 		// Decrease attack timer
 		if (attackTimer > 0) {
-			attackTimer--;
+			attackTimer -= 1;
 		}
 
 		// Handle attacking
@@ -122,7 +122,7 @@ public class Combat {
 						method.finished(character);
 
 						// Reset attack timer
-						attackTimer = method.getAttackSpeed(character);
+						attackTimer += method.getAttackSpeed(character);
 						disregardDelay = false;
 					}
 				}
@@ -241,7 +241,7 @@ public class Combat {
 	}
 
 	// The user's attack timer
-	private int attackTimer;
+	private float attackTimer;
 
 	// Should we disregard attack timers?
 	private boolean disregardDelay;
@@ -308,11 +308,11 @@ public class Combat {
 		this.target = target;
 	}
 
-	public int getAttackTimer() {
+	public float getAttackTimer() {
 		return attackTimer;
 	}
 
-	public void setAttackTimer(int attackTimer) {
+	public void setAttackTimer(float attackTimer) {
 		this.attackTimer = attackTimer;
 	}
 

@@ -10,7 +10,7 @@ public interface CombatMethod {
 
 	public abstract void onQueueAdd(Character character, Character target);
 
-	public abstract int getAttackSpeed(Character character);
+	public abstract float getAttackSpeed(Character character);
 
 	public abstract int getAttackDistance(Character character);
 

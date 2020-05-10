@@ -62,7 +62,7 @@ public class DarkBowCombatMethod implements CombatMethod {
 	}
 
 	@Override
-	public int getAttackSpeed(Character character) {
+	public float getAttackSpeed(Character character) {
 		return character.getBaseAttackSpeed() + 1;
 	}
 

@@ -65756,7 +65756,7 @@ interfaceId: 425
 EquipmentType: WEAPON
 Requirement[0]: 70
 Bonus[2]: 85
-Bonus[10]: 72
+Bonus[10]: 56
 finish
 
 Item Id: 4748

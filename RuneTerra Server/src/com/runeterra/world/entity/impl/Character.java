@@ -103,7 +103,7 @@ public abstract class Character extends Entity {
 
 	public abstract int getBaseDefence(CombatType type);
 
-	public abstract int getBaseAttackSpeed();
+	public abstract float getBaseAttackSpeed();
 
 	public abstract int getAttackAnim();
 

@@ -241,7 +241,7 @@ public final class WeaponInterfaces {
         ),
         DUAL_HAMMER(425,
                     428,
-                    5,
+                    2.5f,
                     new FightType[]{FightType.DUAL_HAMMER_POUND,
                             FightType.DUAL_HAMMER_PUMMEL,
                             FightType.DUAL_HAMMER_BLOCK},
@@ -262,7 +262,7 @@ public final class WeaponInterfaces {
         /**
          * The attack speed of weapons using this interface.
          */
-        private int speed;
+        private float speed;
 
         /**
          * The fight types that correspond with this interface.
@@ -291,7 +291,7 @@ public final class WeaponInterfaces {
          */
         private WeaponInterface(int interfaceId,
                                 int nameLineId,
-                                int speed,
+                                float speed,
                                 FightType[] fightType,
                                 int specialBar,
                                 int specialMeter
@@ -312,7 +312,7 @@ public final class WeaponInterfaces {
          * @param speed       the attack speed of weapons using this interface.
          * @param fightType   the fight types that correspond with this interface.
          */
-        private WeaponInterface(int interfaceId, int nameLineId, int speed, FightType[] fightType) {
+        private WeaponInterface(int interfaceId, int nameLineId, float speed, FightType[] fightType) {
             this(interfaceId, nameLineId, speed, fightType, -1, -1);
         }
 
@@ -339,7 +339,7 @@ public final class WeaponInterfaces {
          *
          * @return the attack speed of weapons using this interface.
          */
-        public int getSpeed() {
+        public float getSpeed() {
             return speed;
         }
 

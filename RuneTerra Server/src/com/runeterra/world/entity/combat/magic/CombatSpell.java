@@ -58,8 +58,8 @@ public abstract class CombatSpell extends Spell {
 		});
 	}
 
-	public int getAttackSpeed() {
-		int speed = 5;
+	public float getAttackSpeed() {
+		float speed = 5;
 		final CombatSpell spell = this;
 		if (spell instanceof CombatAncientSpell) {
 

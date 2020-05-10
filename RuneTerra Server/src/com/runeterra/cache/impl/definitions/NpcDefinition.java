@@ -119,7 +119,7 @@ public class NpcDefinition {
 					definition.hitpoints = Integer.parseInt(value);
 					break;
 				case "attackspeed":
-					definition.attackSpeed = Integer.parseInt(value);
+					definition.attackSpeed = Float.parseFloat(value);
 					break;
 				case "attackanim":
 					definition.attackAnim = Integer.parseInt(value);
@@ -210,7 +210,7 @@ public class NpcDefinition {
 	private int hitpoints;
 
 	/** The attack speed of this npc. */
-	private int attackSpeed;
+	private float attackSpeed;
 
 	/** The attack animation of this npc. */
 	private int attackAnim;
@@ -329,11 +329,11 @@ public class NpcDefinition {
 		this.hitpoints = hitpoints;
 	}
 
-	public int getAttackSpeed() {
+	public float getAttackSpeed() {
 		return attackSpeed;
 	}
 
-	public void setAttackSpeed(int attackSpeed) {
+	public void setAttackSpeed(float attackSpeed) {
 		this.attackSpeed = attackSpeed;
 	}
 
