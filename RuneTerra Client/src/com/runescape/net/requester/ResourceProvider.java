@@ -471,13 +471,9 @@ public final class ResourceProvider extends Provider implements Runnable {
 		for (int area = 0; area < areas.length; area++) {			
 			if (areas[area] == code) {
 				if (regionX == 0) {
-					int mapFile = mapFiles[area] > 3535 ? -1 : mapFiles[area];
-					System.out.println("MapFile " + mapFile);
-					return mapFile;
+					return mapFiles[area] > 3535 ? -1 : mapFiles[area];
 				} else {
-					int landscape = landscapes[area] > 3535 ? -1 : landscapes[area];
-					System.out.println("Landscape " + landscape);
-					return landscape;
+					return landscapes[area] > 3535 ? -1 : landscapes[area];
 				}
 			}
 		}

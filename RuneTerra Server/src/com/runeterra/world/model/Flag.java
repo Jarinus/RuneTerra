@@ -2,7 +2,7 @@ package com.runeterra.world.model;
 
 /**
  * Represents a Flag that a character entity can update.
- * 
+ * §
  * @author relex lawl
  */
 public enum Flag {

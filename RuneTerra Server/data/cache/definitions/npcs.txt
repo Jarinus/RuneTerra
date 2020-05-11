@@ -82,7 +82,7 @@ attackable: true
 walk-radius: 3
 respawn: 10
 maxhit: 1
-hitpoints: 50
+hitpoints: 500
 attackspeed: 5
 attackanim: 1312
 defenceanim: 1313
@@ -93,6 +93,10 @@ defencemelee: 5
 defencerange: 5
 defencemage: 3
 combatlevel: 13
+finish
+
+npc: 100
+spawn-position: 3195:3436
 finish
 
 npc: 100

@@ -498,9 +498,9 @@ public class PlayerUpdating {
 	 */
 	private static void updateSingleHit(PacketBuilder builder, Player target) {
 		builder.putShort(target.getPrimaryHit().getDamage());
-		builder.putShort(target.getPrimaryHit().getHitmask().ordinal());
-		builder.put(target.getHitpoints());
-		builder.put(target.getSkillManager().getMaxLevel(Skill.HITPOINTS));
+		builder.put(target.getPrimaryHit().getHitmask().ordinal());
+		builder.putShort(target.getHitpoints());
+		builder.putShort(target.getSkillManager().getMaxLevel(Skill.HITPOINTS));
 	}
 
 	/**

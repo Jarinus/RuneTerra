@@ -144,7 +144,7 @@ public final class Configuration {
 	/**
 	 * Enables/Disables Revision 554 hitmarks
 	 */
-	public static boolean hitmarks554 = false;
+	public static boolean hitmarks554 = true;
 
 	/**
 	 * Enables/Disables Revision 554 health bar

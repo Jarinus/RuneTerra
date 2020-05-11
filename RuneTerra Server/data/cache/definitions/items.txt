@@ -65288,7 +65288,7 @@ Requirement[0]: 70
 Requirement[2]: 70
 Bonus[1]: 103
 Bonus[2]: 95
-Bonus[10]: 105
+Bonus[10]: 1050
 finish
 
 Item Id: 4719
@@ -65756,7 +65756,7 @@ interfaceId: 425
 EquipmentType: WEAPON
 Requirement[0]: 70
 Bonus[2]: 85
-Bonus[10]: 56
+Bonus[10]: 512
 finish
 
 Item Id: 4748

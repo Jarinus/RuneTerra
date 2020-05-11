@@ -20,7 +20,7 @@ public class Mob extends Renderable {
 	public int standTurnAnimIndex;
 	public int textColour;
 	public final int[] hitDamages;
-	public final int[] hitMarkTypes;
+	public final int[] hitMarkTypes; // 0 = blue, 1 = red, 2 = green, 3 = large red
 	public final int[] hitsLoopCycle;
 	public int movementAnimation;
 	public int displayedMovementFrames;
