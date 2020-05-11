@@ -212,7 +212,7 @@ public class Combat {
 			// Check if the key for this entry is dead or has logged
 			// out.
 			Player player = entry.getKey();
-			if (player.getHitpoints() <= 0 || !player.isRegistered()) {
+			if (player.getHealth() <= 0 || !player.isRegistered()) {
 				continue;
 			}
 

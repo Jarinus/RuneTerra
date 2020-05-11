@@ -140,8 +140,8 @@ public class CombatFactory {
     public static boolean validTarget(Character attacker, Character target) {
         if (!target.isRegistered() ||
                 !attacker.isRegistered() ||
-                attacker.getHitpoints() <= 0 ||
-                target.getHitpoints() <= 0) {
+                attacker.getHealth() <= 0 ||
+                target.getHealth() <= 0) {
             attacker.getCombat().reset();
             return false;
         }
@@ -264,7 +264,7 @@ public class CombatFactory {
         if (!(Location.inMulti(attacker) && Location.inMulti(target))) {
             if (isBeingAttacked(attacker) &&
                     attacker.getCombat().getAttacker() != target &&
-                    attacker.getCombat().getAttacker().getHitpoints() > 0) {
+                    attacker.getCombat().getAttacker().getHealth() > 0) {
                 if (attacker.isPlayer()) {
                     attacker.getAsPlayer().getPacketSender().sendMessage("You are already under attack!");
                 }
@@ -321,7 +321,7 @@ public class CombatFactory {
         Character attacker = qHit.getAttacker();
         Character target = qHit.getTarget();
         HitDamage[] damage = qHit.getHits();
-        if (damage == null || target.getHitpoints() <= 0) {
+        if (damage == null || target.getHealth() <= 0) {
             return;
         }
 
@@ -337,7 +337,7 @@ public class CombatFactory {
         final Character target = qHit.getTarget();
         final CombatMethod method = qHit.getCombatMethod();
 
-        if (target.getHitpoints() <= 0) {
+        if (target.getHealth() <= 0) {
             return;
         }
 
@@ -637,12 +637,12 @@ public class CombatFactory {
 
         // Handle redemption here
         if (PrayerHandler.isActivated(victim, PrayerHandler.REDEMPTION) &&
-                victim.getHitpoints() <= (victim.getSkillManager().getMaxLevel(Skill.HITPOINTS) / 10)) {
+                victim.getHealth() <= (victim.getSkillManager().getMaxLevel(Skill.HITPOINTS) / 10)) {
             int amountToHeal = (int) (victim.getSkillManager().getMaxLevel(Skill.PRAYER) * .25);
             victim.performGraphic(new Graphic(436));
             victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
             victim.getSkillManager().updateSkill(Skill.PRAYER);
-            victim.getSkillManager().setCurrentLevel(Skill.HITPOINTS, victim.getHitpoints() + amountToHeal);
+            victim.getSkillManager().setCurrentLevel(Skill.HITPOINTS, victim.getHealth() + amountToHeal);
             victim.getSkillManager().updateSkill(Skill.HITPOINTS);
             victim.getPacketSender().sendMessage("You've run out of prayer points!");
             PrayerHandler.deactivatePrayers(victim);
@@ -654,7 +654,7 @@ public class CombatFactory {
             Player p = (Player) attacker;
 
             // The retribution prayer effect.
-            if (PrayerHandler.isActivated(victim, PrayerHandler.RETRIBUTION) && victim.getHitpoints() < 1) {
+            if (PrayerHandler.isActivated(victim, PrayerHandler.RETRIBUTION) && victim.getHealth() < 1) {
                 victim.performGraphic(new Graphic(437));
                 if (p.getPosition().isWithinDistance(victim.getPosition(), CombatConstants.RETRIBUTION_RADIUS)) {
                     p.dealDamage(new HitDamage(Misc.getRandom(CombatConstants.MAXIMUM_RETRIBUTION_DAMAGE),

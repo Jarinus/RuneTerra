@@ -29,7 +29,7 @@ public final class NpcAggression {
 		// Loop through all of the aggressive npcs.
 		for (NPC npc : player.getLocalNpcs()) {
 
-			if (npc == null || npc.getHitpoints() <= 0) {
+			if (npc == null || npc.getHealth() <= 0) {
 				continue;
 			}
 

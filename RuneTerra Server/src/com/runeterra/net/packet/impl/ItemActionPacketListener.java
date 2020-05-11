@@ -62,7 +62,7 @@ public class ItemActionPacketListener implements PacketListener {
 
 	@Override
 	public void handleMessage(Player player, Packet packet) {
-		if (player.getHitpoints() <= 0) {
+		if (player.getHealth() <= 0) {
 			return;
 		}
 		switch (packet.getOpcode()) {

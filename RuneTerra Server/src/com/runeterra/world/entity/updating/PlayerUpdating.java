@@ -499,7 +499,7 @@ public class PlayerUpdating {
 	private static void updateSingleHit(PacketBuilder builder, Player target) {
 		builder.putShort(target.getPrimaryHit().getDamage());
 		builder.put(target.getPrimaryHit().getHitmask().ordinal());
-		builder.putShort(target.getHitpoints());
+		builder.putShort(target.getHealth());
 		builder.putShort(target.getSkillManager().getMaxLevel(Skill.HITPOINTS));
 	}
 
@@ -515,7 +515,7 @@ public class PlayerUpdating {
 	private static void updateDoubleHit(PacketBuilder builder, Player target) {
 		builder.putShort(target.getSecondaryHit().getDamage());
 		builder.put(target.getSecondaryHit().getHitmask().ordinal());
-		builder.putShort(target.getHitpoints());
+		builder.putShort(target.getHealth());
 		builder.putShort(target.getSkillManager().getMaxLevel(Skill.HITPOINTS));
 	}
 

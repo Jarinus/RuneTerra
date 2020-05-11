@@ -48,9 +48,9 @@ public class NPC extends Character {
 				// We've been damaged.
 				// Regenerate health.
 				if (getDefinition().getHitpoints() > hitpoints) {
-					setHitpoints(hitpoints + (int) (getDefinition().getHitpoints() * 0.1));
+					setHealth(hitpoints + (int) (getDefinition().getHitpoints() * 0.1));
 					if (hitpoints > getDefinition().getHitpoints()) {
-						setHitpoints(getDefinition().getHitpoints());
+						setHealth(getDefinition().getHitpoints());
 					}
 				}
 
@@ -76,25 +76,44 @@ public class NPC extends Character {
 	}
 
 	@Override
-	public int getHitpoints() {
+	public int getHealth() {
 		return hitpoints;
 	}
 
 	@Override
-	public NPC setHitpoints(int hitpoints) {
-		this.hitpoints = hitpoints;
+	public int getMana() {
+		return 0;
+	}
+
+	@Override
+	public NPC setHealth(int health) {
+		if (isDying) {
+			return this;
+		}
+
+		this.hitpoints = health;
+
 		if (this.hitpoints <= 0)
 			appendDeath();
 		return this;
 	}
 
 	@Override
+	public Character setMana(int mana) {
+		if (isDying) {
+			return this;
+		}
+		// TODO: Implement
+		return this;
+	}
+
+	@Override
 	public void heal(int heal) {
 		if ((this.hitpoints + heal) > getDefinition().getHitpoints()) {
-			setHitpoints(getDefinition().getHitpoints());
+			setHealth(getDefinition().getHitpoints());
 			return;
 		}
-		setHitpoints(this.hitpoints + heal);
+		setHealth(this.hitpoints + heal);
 	}
 
 	@Override

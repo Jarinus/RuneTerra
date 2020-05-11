@@ -91,13 +91,17 @@ public abstract class Character extends Entity {
 
 	public abstract void onRegister();
 
-	public abstract Character setHitpoints(int hitpoints);
+	public abstract Character setHealth(int health);
+
+	public abstract Character setMana(int mana);
 
 	public abstract void appendDeath();
 
 	public abstract void heal(int damage);
 
-	public abstract int getHitpoints();
+	public abstract int getHealth();
+
+	public abstract int getMana();
 
 	public abstract int getBaseAttack(CombatType type);
 
@@ -323,23 +327,23 @@ public abstract class Character extends Entity {
 			dealSecondaryDamage(hit);
 			return;
 		}
-		if (getHitpoints() <= 0)
+		if (getHealth() <= 0)
 			return;
 		primaryHit = decrementHealth(hit);
 		getUpdateFlag().flag(Flag.SINGLE_HIT);
 	}
 
 	public HitDamage decrementHealth(HitDamage hit) {
-		if (getHitpoints() <= 0)
+		if (getHealth() <= 0)
 			return hit;
-		if (hit.getDamage() > getHitpoints())
-			hit.setDamage(getHitpoints());
+		if (hit.getDamage() > getHealth())
+			hit.setDamage(getHealth());
 		if (hit.getDamage() < 0)
 			hit.setDamage(0);
-		int outcome = getHitpoints() - hit.getDamage();
+		int outcome = getHealth() - hit.getDamage();
 		if (outcome < 0)
 			outcome = 0;
-		setHitpoints(outcome);
+		setHealth(outcome);
 		return hit;
 	}
 

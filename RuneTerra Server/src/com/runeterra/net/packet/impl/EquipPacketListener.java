@@ -27,7 +27,7 @@ public class EquipPacketListener implements PacketListener {
 
 	@Override
 	public void handleMessage(Player player, Packet packet) {
-		if (player.getHitpoints() <= 0)
+		if (player.getHealth() <= 0)
 			return;
 
 		int id = packet.readShort();

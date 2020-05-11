@@ -160,7 +160,7 @@ public class PlayerDeathTask extends Task {
 			e.printStackTrace();
 			if (player != null) {
 				player.moveTo(GameConstants.DEFAULT_POSITION.copy());
-				player.setHitpoints(player.getSkillManager().getMaxLevel(Skill.HITPOINTS));
+				player.setHealth(player.getSkillManager().getMaxLevel(Skill.HITPOINTS));
 			}
 		}
 	}

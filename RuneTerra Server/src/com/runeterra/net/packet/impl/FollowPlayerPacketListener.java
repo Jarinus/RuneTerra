@@ -15,7 +15,7 @@ public class FollowPlayerPacketListener implements PacketListener {
 
 	@Override
 	public void handleMessage(Player player, Packet packet) {
-		if (player.getHitpoints() <= 0)
+		if (player.getHealth() <= 0)
 			return;
 		int otherPlayersIndex = packet.readLEShort();
 		if (otherPlayersIndex < 0 || otherPlayersIndex > World.getPlayers().capacity())
@@ -23,8 +23,8 @@ public class FollowPlayerPacketListener implements PacketListener {
 		Player leader = World.getPlayers().get(otherPlayersIndex);
 		if (leader == null)
 			return;
-		if (leader.getHitpoints() <= 0
-				|| player.getHitpoints() <= 0/*
+		if (leader.getHealth() <= 0
+				|| player.getHealth() <= 0/*
 												 * || !player.getLocation().
 												 * isFollowingAllowed()
 												 */) {

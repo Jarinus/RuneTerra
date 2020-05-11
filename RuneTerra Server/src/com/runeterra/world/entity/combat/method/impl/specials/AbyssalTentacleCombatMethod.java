@@ -62,7 +62,7 @@ public class AbyssalTentacleCombatMethod implements CombatMethod {
 	public void handleAfterHitEffects(QueueableHit hit) {
 		Character target = hit.getTarget();
 
-		if (target.getHitpoints() <= 0) {
+		if (target.getHealth() <= 0) {
 			return;
 		}
 		target.performGraphic(GRAPHIC);

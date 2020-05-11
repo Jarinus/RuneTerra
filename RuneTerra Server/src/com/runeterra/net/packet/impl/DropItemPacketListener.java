@@ -27,7 +27,7 @@ public class DropItemPacketListener implements PacketListener {
 			return;
 		}
 
-		if (player.getHitpoints() <= 0 || player.getInterfaceId() > 0)
+		if (player.getHealth() <= 0 || player.getInterfaceId() > 0)
 			return;
 		if (itemSlot < 0 || itemSlot > player.getInventory().capacity())
 			return;

@@ -101,7 +101,7 @@ public class MagicCombatMethod implements CombatMethod {
 		boolean accurate = hit.isAccurate();
 		int damage = hit.getTotalDamage();
 
-		if (attacker.getHitpoints() <= 0 || target.getHitpoints() <= 0) {
+		if (attacker.getHealth() <= 0 || target.getHealth() <= 0) {
 			return;
 		}
 

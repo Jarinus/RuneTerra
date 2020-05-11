@@ -17,7 +17,7 @@ public class NPCRespawnTask extends Task {
 	public void execute() {
 
 		NPC npc_ = new NPC(npc.getId(), npc.getSpawnPosition());
-		npc_.setHitpoints(npc.getDefinition().getHitpoints());
+		npc_.setHealth(npc.getDefinition().getHitpoints());
 		World.getNpcAddQueue().add(npc_);
 
 		stop();

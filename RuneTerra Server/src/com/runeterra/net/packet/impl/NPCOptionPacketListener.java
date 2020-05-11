@@ -300,7 +300,7 @@ public class NPCOptionPacketListener implements PacketListener {
 			return;
 		}
 
-		if (interact == null || interact.getHitpoints() <= 0) {
+		if (interact == null || interact.getHealth() <= 0) {
 			player.getMovementQueue().reset();
 			return;
 		}
@@ -326,7 +326,7 @@ public class NPCOptionPacketListener implements PacketListener {
 			return;
 		}
 
-		if (interact == null || interact.getHitpoints() <= 0) {
+		if (interact == null || interact.getHealth() <= 0) {
 			player.getMovementQueue().reset();
 			return;
 		}

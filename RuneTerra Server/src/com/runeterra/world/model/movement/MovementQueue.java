@@ -302,7 +302,7 @@ public final class MovementQueue {
 		}
 
 		// Check if we can still follow the leader.
-		if (followCharacter.getHitpoints() <= 0 || !followCharacter.isRegistered() || character.getHitpoints() <= 0
+		if (followCharacter.getHealth() <= 0 || !followCharacter.isRegistered() || character.getHealth() <= 0
 				|| !character.isRegistered()) {
 			if (character.getInteractingEntity() != null) {
 				character.setEntityInteraction(null);

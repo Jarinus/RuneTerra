@@ -60,7 +60,7 @@ public class BountyHunter {
 
 					// Check the player isn't teleporting or that they have
 					// died..
-					if (player.getHitpoints() <= 0 || player.isNeedsPlacement()) {
+					if (player.getHealth() <= 0 || player.isNeedsPlacement()) {
 						return;
 					}
 
@@ -75,7 +75,7 @@ public class BountyHunter {
 
 						// Check the guy isn't teleporting or that they have
 						// died..
-						if (other.getHitpoints() <= 0 || other.isNeedsPlacement()) {
+						if (other.getHealth() <= 0 || other.isNeedsPlacement()) {
 							continue;
 						}
 

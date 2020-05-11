@@ -42,7 +42,7 @@ public class PlayerOptionPacketListener implements PacketListener {
 			return;
 		final Player attacked = World.getPlayers().get(index);
 
-		if (attacked == null || attacked.getHitpoints() <= 0 || attacked.equals(player)) {
+		if (attacked == null || attacked.getHealth() <= 0 || attacked.equals(player)) {
 			player.getMovementQueue().reset();
 			return;
 		}

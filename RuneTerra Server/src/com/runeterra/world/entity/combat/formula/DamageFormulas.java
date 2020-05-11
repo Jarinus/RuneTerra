@@ -66,7 +66,7 @@ public class DamageFormulas {
 
 		// Dharoks effect
 		if (CombatFactory.fullDharoks(entity)) {
-			int hitpoints = entity.getHitpoints();
+			int hitpoints = entity.getHealth();
 			if (entity.isNpc()) {
 				maxHit += (int) ((entity.getAsNpc().getDefinition().getHitpoints() - hitpoints) * 0.2);
 			} else {

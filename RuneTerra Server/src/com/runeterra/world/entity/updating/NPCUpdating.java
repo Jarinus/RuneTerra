@@ -233,7 +233,7 @@ public class NPCUpdating {
 	private static void updateSingleHit(PacketBuilder builder, NPC npc) {
 		builder.putShort(npc.getPrimaryHit().getDamage());
 		builder.put(npc.getPrimaryHit().getHitmask().ordinal());
-		builder.putShort(npc.getHitpoints());
+		builder.putShort(npc.getHealth());
 		builder.putShort(npc.getDefinition().getHitpoints());
 	}
 
@@ -249,7 +249,7 @@ public class NPCUpdating {
 	private static void updateDoubleHit(PacketBuilder builder, NPC npc) {
 		builder.putShort(npc.getSecondaryHit().getDamage());
 		builder.put(npc.getSecondaryHit().getHitmask().ordinal());
-		builder.putShort(npc.getHitpoints());
+		builder.putShort(npc.getHealth());
 		builder.putShort(npc.getDefinition().getHitpoints());
 	}
 

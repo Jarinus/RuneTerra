@@ -26,7 +26,7 @@ public class MagicOnPlayerPacketListener implements PacketListener {
 			return;
 		}
 
-		if (attacked.getHitpoints() <= 0) {
+		if (attacked.getHealth() <= 0) {
 			player.getMovementQueue().reset();
 			return;
 		}

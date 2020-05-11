@@ -76,7 +76,7 @@ public abstract class CombatAncientSpell extends CombatSpell {
 			}
 
 			if (next.getPosition().isWithinDistance(castOn.getPosition(), spellRadius()) && !next.equals(cast)
-					&& !next.equals(castOn) && next.getHitpoints() > 0 && next.getHitpoints() > 0) {
+					&& !next.equals(castOn) && next.getHealth() > 0 && next.getHealth() > 0) {
 
 				QueueableHit qH = new QueueableHit(cast, next, CombatFactory.MAGIC_COMBAT, true, 0)
 						.setHandleAfterHitEffects(false);

@@ -46,7 +46,7 @@ public class NpcDefinition {
 						if (spawnPos != null) {
 							NPC npc = new NPC(definition.getId(), spawnPos);
 							if (definition.getHitpoints() > 0) {
-								npc.setHitpoints(definition.getHitpoints());
+								npc.setHealth(definition.getHitpoints());
 							}
 							World.getNpcAddQueue().add(npc);
 							spawnPos = null;

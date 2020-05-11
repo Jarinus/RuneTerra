@@ -68,7 +68,7 @@ public class Consumables {
 	 *            The slot of the food being eaten.
 	 */
 	private static void eat(Player player, FoodType food, int slot) {
-		if (player.getHitpoints() <= 0) {
+		if (player.getHealth() <= 0) {
 			return;
 		}
 		if (food != null && player.getFoodTimer().elapsed(1100) || food == FoodType.KARAMBWAN) {
@@ -93,7 +93,7 @@ public class Consumables {
 			}
 			String e = food.toString() == "BANDAGES" ? "use" : "eat";
 			player.getPacketSender().sendMessage("You " + e + " the " + food.name + ".");
-			player.setHitpoints(player.getHitpoints() + heal);
+			player.setHealth(player.getHealth() + heal);
 		}
 	}
 

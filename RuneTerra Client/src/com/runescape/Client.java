@@ -2643,7 +2643,10 @@ public class Client extends GameApplet {
 
     private void drawStatusBar(int current, int max, int drawX, int drawY, int width, int height, int color) {
         Rasterizer2D.drawBox(drawX, drawY, width, height, 11740160);
-        int currentBarWidth = (int) Math.round((current / 1.0 / max) * width);
+        int currentBarWidth = (int) Math.min(
+                Math.round((current / 1.0 / max) * width),
+                width
+        );
         Rasterizer2D.drawBox(drawX, drawY, currentBarWidth, height, color);
 
         String text = current + " / " + max;
