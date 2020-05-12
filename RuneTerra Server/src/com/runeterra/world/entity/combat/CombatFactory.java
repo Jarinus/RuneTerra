@@ -18,7 +18,7 @@ import com.runeterra.world.entity.combat.method.CombatMethod;
 import com.runeterra.world.entity.combat.method.impl.MagicCombatMethod;
 import com.runeterra.world.entity.combat.method.impl.MeleeCombatMethod;
 import com.runeterra.world.entity.combat.method.impl.RangedCombatMethod;
-import com.runeterra.world.entity.combat.method.impl.specials.DualWieldCombatMethod;
+import com.runeterra.world.entity.combat.method.impl.DualWieldCombatMethod;
 import com.runeterra.world.entity.combat.ranged.RangedData;
 import com.runeterra.world.entity.impl.Character;
 import com.runeterra.world.entity.impl.npc.NPC;

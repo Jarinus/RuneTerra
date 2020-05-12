@@ -1,4 +1,4 @@
-package com.runeterra.world.entity.combat.method.impl.specials;
+package com.runeterra.world.entity.combat.method.impl;
 
 import com.runeterra.world.entity.combat.CombatType;
 import com.runeterra.world.entity.combat.hit.QueueableHit;

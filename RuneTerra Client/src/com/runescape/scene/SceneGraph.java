@@ -702,6 +702,13 @@ public final class SceneGraph {
 		}
 	}
 
+	public static void updateViewport(int viewportWidth, int viewportHeight) {
+		SceneGraph.viewportWidth = viewportWidth;
+		SceneGraph.viewportHeight = viewportHeight;
+		viewportHalfWidth = viewportWidth / 2;
+		viewportHalfHeight = viewportHeight / 2;
+	}
+
 	public static void setupViewport(int i, int j, int viewportWidth, int viewportHeight, int ai[]) {
 		anInt495 = 0;
 		anInt496 = 0;

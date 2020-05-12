@@ -48,6 +48,14 @@ public class GameApplet extends Applet implements Runnable, MouseListener,
 	protected int rotationGliding;
 	public boolean resized;
 
+	public void updateFrameSize(int width, int height) {
+		myWidth = width;
+		myHeight = height;
+		gameFrame.setSize(width, height);
+		graphics = gameFrame.getGraphics();
+		System.out.println(height + " - " + gameFrame.getSize().getHeight());
+	}
+
 	public void refreshFrameSize(boolean undecorated, int width, int height,
 			boolean resizable, boolean full) {
 		boolean createdByApplet = (isApplet && !full);

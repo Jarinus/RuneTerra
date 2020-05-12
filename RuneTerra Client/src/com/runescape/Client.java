@@ -74,8 +74,31 @@ public class Client extends GameApplet {
     private Sprite[] skill_sprites = new Sprite[SkillConstants.SKILL_COUNT];
     private Sprite hp;
 
+    public static ScreenMode frameMode = ScreenMode.FULLSCREEN;
+    public static int frameWidth = 765;
+    public static int frameHeight = 503;
+    public static int screenAreaWidth = 800;
+    public static int screenAreaHeight = 600;
+    public static int cameraZoom = 600;
+    public static boolean showChatComponents = true;
+    public static boolean showTabComponents = true;
+    public static boolean changeTabArea = frameMode == ScreenMode.FIXED ? false : true;
+    public static boolean changeChatArea = frameMode == ScreenMode.FIXED ? false : true;
+    public static boolean transparentTabArea = false;
+    private final int[] soundVolume;
+
+    private final NumberFormat format = NumberFormat.getInstance(Locale.US);
+
+    /**
+     * CRC32 is one of hash functions based on on the "polynomial" division idea. The CRC is
+     * acronym for Cyclic Redundancy Code (other variants instead "Code" is "Check" and
+     * "Checksum") algorithm. The number 32 is specifying the size of resulting hash value
+     * (checksum The value calculated from content of file.
+     */
+    public CRC32 indexCrc = new CRC32();
+
     //Timers
-    public List<EffectTimer> effects_list = new CopyOnWriteArrayList<EffectTimer>();
+    public List<EffectTimer> effects_list = new CopyOnWriteArrayList<>();
 
     public void addEffectTimer(EffectTimer et) {
 
@@ -112,7 +135,6 @@ public class Client extends GameApplet {
             }
         }
     }
-
 
     private String calculateInMinutes(int paramInt) {
         int i = (int) Math.floor(paramInt / 60);
@@ -191,29 +213,6 @@ public class Client extends GameApplet {
         }
         Rasterizer2D.drawBox(xPos + 2, yPos + 38, pixelsLength, 10, 31744);
     }
-
-    public static ScreenMode frameMode = ScreenMode.FIXED;
-    public static int frameWidth = 765;
-    public static int frameHeight = 503;
-    public static int screenAreaWidth = 512;
-    public static int screenAreaHeight = 334;
-    public static int cameraZoom = 600;
-    public static boolean showChatComponents = true;
-    public static boolean showTabComponents = true;
-    public static boolean changeTabArea = frameMode == ScreenMode.FIXED ? false : true;
-    public static boolean changeChatArea = frameMode == ScreenMode.FIXED ? false : true;
-    public static boolean transparentTabArea = false;
-    private final int[] soundVolume;
-
-    private final NumberFormat format = NumberFormat.getInstance(Locale.US);
-
-    /**
-     * CRC32 is one of hash functions based on on the "polynomial" division idea. The CRC is
-     * acronym for Cyclic Redundancy Code (other variants instead "Code" is "Check" and
-     * "Checksum") algorithm. The number 32 is specifying the size of resulting hash value
-     * (checksum The value calculated from content of file.
-     */
-    public CRC32 indexCrc = new CRC32();
 
     public static void frameMode(ScreenMode screenMode) {
         if (frameMode != screenMode) {
@@ -319,16 +318,25 @@ public class Client extends GameApplet {
 
     public void refreshFrameSize() {
         if (frameMode == ScreenMode.RESIZABLE) {
-            if (frameWidth != (appletClient() ? getGameComponent().getWidth() : gameFrame.getFrameWidth())) {
-                frameWidth = (appletClient() ? getGameComponent().getWidth() : gameFrame.getFrameWidth());
-                screenAreaWidth = frameWidth;
-                setBounds();
+            int width = appletClient() ? getGameComponent().getWidth() : gameFrame.getFrameWidth();
+            int height = appletClient() ? getGameComponent().getHeight() : gameFrame.getFrameHeight();
+
+            if (frameWidth == width && frameHeight == height) {
+                return;
             }
-            if (frameHeight != (appletClient() ? getGameComponent().getHeight() : gameFrame.getFrameHeight())) {
-                frameHeight = (appletClient() ? getGameComponent().getHeight() : gameFrame.getFrameHeight());
-                screenAreaHeight = frameHeight;
-                setBounds();
+
+            if (frameWidth != width) {
+                frameWidth = width;
+                screenAreaWidth = width;
             }
+
+            if (frameHeight != height) {
+                frameHeight = height;
+                screenAreaHeight = height;
+            }
+
+            instance.updateFrameSize(width, height);
+            setBounds();
         }
     }
 
@@ -2592,7 +2600,7 @@ public class Client extends GameApplet {
                     if (anIntArray981[defaultText] == 4) {
                         int i4 = boldText.method384(s);
                         int k4 = ((150 - anIntArray982[defaultText]) * (i4 + 100)) / 150;
-                        Rasterizer2D.setDrawingArea(334, spriteDrawX - 50, spriteDrawX + 50, 0);
+                        Rasterizer2D.setDrawingArea(screenAreaHeight, spriteDrawX - 50, spriteDrawX + 50, 0);
                         boldText.render(0, s, spriteDrawY + 1, (spriteDrawX + 50) - k4);
                         boldText.render(i3, s, spriteDrawY, (spriteDrawX + 50) - k4);
                         Rasterizer2D.defaultDrawingAreaSize();
@@ -2603,7 +2611,7 @@ public class Client extends GameApplet {
                         if (j4 < 25) {
                             l4 = j4 - 25;
                         } else if (j4 > 125) l4 = j4 - 125;
-                        Rasterizer2D.setDrawingArea(spriteDrawY + 5, 0, 512, spriteDrawY - boldText.verticalSpace - 1);
+                        Rasterizer2D.setDrawingArea(spriteDrawY + 5, 0, screenAreaWidth, spriteDrawY - boldText.verticalSpace - 1);
                         boldText.drawText(0, s, spriteDrawY + 1 + l4, spriteDrawX);
                         boldText.drawText(i3, s, spriteDrawY + l4, spriteDrawX);
                         Rasterizer2D.defaultDrawingAreaSize();
@@ -2643,10 +2651,7 @@ public class Client extends GameApplet {
 
     private void drawStatusBar(int current, int max, int drawX, int drawY, int width, int height, int color) {
         Rasterizer2D.drawBox(drawX, drawY, width, height, 11740160);
-        int currentBarWidth = (int) Math.min(
-                Math.round((current / 1.0 / max) * width),
-                width
-        );
+        int currentBarWidth = (int) Math.min(Math.round((current / 1.0 / max) * width), width);
         Rasterizer2D.drawBox(drawX, drawY, currentBarWidth, height, color);
 
         String text = current + " / " + max;
@@ -7606,7 +7611,7 @@ public class Client extends GameApplet {
         Rasterizer2D.clear();
         cacheSprite[19].drawSprite(0, 0);
         tabImageProducer = new ProducingGraphicsBuffer(249, 335);// inventory
-        gameScreenImageProducer = new ProducingGraphicsBuffer(512, 334);// gamescreen
+        gameScreenImageProducer = new ProducingGraphicsBuffer(screenAreaWidth, screenAreaHeight);// gamescreen
         Rasterizer2D.clear();
         chatSettingImageProducer = new ProducingGraphicsBuffer(249, 45);
         welcomeScreenRaised = true;
@@ -15696,8 +15701,8 @@ public class Client extends GameApplet {
      **/
     private void drawConsole() {
         if (consoleOpen) {
-            Rasterizer2D.drawTransparentBox(334, 0, getGameComponent().getWidth(), 0, 5320850, 97);
-            Rasterizer2D.drawPixels(1, 315, 0, 16777215, getGameComponent().getWidth());
+            Rasterizer2D.drawTransparentBox(screenAreaHeight, 0, screenAreaWidth, 0, 5320850, 97);
+            Rasterizer2D.drawPixels(1, 315, 0, 16777215, screenAreaWidth);
             newBoldFont.drawBasicString("-->", 11, 328, 16777215, 0);
             if (tick % 20 < 10) {
                 newBoldFont.drawBasicString(consoleInput + "|", 38, 328, 16777215, 0);

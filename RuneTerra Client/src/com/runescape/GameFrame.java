@@ -21,11 +21,16 @@ public final class GameFrame extends Frame {
 		if (resizable) {
 			setMinimumSize(new Dimension(766 + insets.left + insets.right, 536 + insets.top + insets.bottom));
 		}
-		setSize(width + insets.left + insets.right, height + insets.top + insets.bottom);
+		setSize(width, height);
 		setLocationRelativeTo(null);
 		setBackground(Color.BLACK);
 		requestFocus();
 		toFront();
+	}
+
+	@Override
+	public void setSize(int width, int height) {
+		super.setSize(width + insets.left + insets.right, height + insets.top + insets.bottom);
 	}
 
 	public Graphics getGraphics() {

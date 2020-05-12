@@ -673,11 +673,11 @@ public class PlayerUpdating {
 		} else {
 			ItemDefinition wep = target.getEquipment().getItems()[Equipment.WEAPON_SLOT].getDefinition();
 			properties.putShort(wep.getStandAnim());
-			properties.putShort(0x337);
+			properties.putShort(wep.getStandTurnAnim()); // 0x337
 			properties.putShort(wep.getWalkAnim());
-			properties.putShort(0x334);
-			properties.putShort(0x335);
-			properties.putShort(0x336);
+			properties.putShort(wep.getTurn180Anim()); // 0x334
+			properties.putShort(wep.getTurn90CWAnim()); // 0x335
+			properties.putShort(wep.getTurn90CCWAnim()); // 0x336
 			properties.putShort(wep.getRunAnim());
 		}
 
